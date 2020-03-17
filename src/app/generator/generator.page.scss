@@ -6,12 +6,15 @@ ion-title {
 
 .controls {
   background-color: var(--ion-color-primary);
-  padding: 2em 1.5em;
+  padding: 1em;
 }
 
 .color-picker-group {
   margin: 1em 0;
-  color: white;
+  label {
+    color: white;
+    font-weight: 600;
+  }
 }
 
 input.color-picker {
@@ -21,6 +24,7 @@ input.color-picker {
   height: 2em;
   margin-right: 0.5em;
   z-index: 1;
+  border: 6px double white;
 }
 
 ion-fab-button {
@@ -34,7 +38,6 @@ ion-fab-button {
     left: 50%;
     margin-left: -23px; // half the width of ion-fab-button
   }
-  
 }
 // Table
 .cell--header {
@@ -48,9 +51,28 @@ td.cell--default {
   // border: 1px solid black;
 }
 
-@media print { 
+@media print {
   /* All your print styles go here */
-  ion-menu, ion-header, form, color-picker, #print, #preview, .controls {
+  ion-menu,
+  ion-header,
+  form,
+  color-picker,
+  #print,
+  #preview,
+  .controls {
     display: none !important;
   }
- }
+}
+
+div.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &:hover {
+    cursor: pointer;
+  }
+  img {
+    height: 500px;
+  }
+}

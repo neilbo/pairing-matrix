@@ -1,7 +1,7 @@
 <ion-header [translucent]="false">
   <ion-toolbar color="primary">
     <ion-title (click)="goHome()">
-      {{title}}
+      {{title}} {{copyright}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -52,7 +52,7 @@
                   <input
                     [style.background]="bgForPrimary"
                     [style.color]="bgForPrimary"
-                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [cpPresetColors]="['#fff', '#000', '#40A551', '#4F007D', '#ff74bc', '#db3832', '#3880ff', '#E86B26', '#fff500']"
                     [(colorPicker)]="bgForPrimary"
                     (colorPickerChange)="onColorChange($event, 'primary')"
                     id="bgForPrimary"
@@ -71,7 +71,7 @@
                     type="text"
                     [style.background]="colorForText"
                     [style.color]="colorForText"
-                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [cpPresetColors]="['#fff', '#000', '#40A551', '#4F007D', '#ff74bc', '#db3832', '#3880ff', '#E86B26', '#fff500']"
                     [(colorPicker)]="colorForText"
                     (colorPickerChange)="onColorChange($event, 'text')"
                     id="colorForText"
@@ -90,7 +90,7 @@
                     type="text"
                     [style.background]="bgForMatched"
                     [style.color]="bgForMatched"
-                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [cpPresetColors]="['#fff', '#000', '#40A551', '#4F007D', '#ff74bc', '#db3832', '#3880ff', '#E86B26', '#fff500']"
                     [(colorPicker)]="bgForMatched"
                     (colorPickerChange)="onColorChange($event, 'matched')"
                     id="bgForMatched"
@@ -109,7 +109,7 @@
                     type="text"
                     [style.background]="colorForLine"
                     [style.color]="colorForLine"
-                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [cpPresetColors]="['#fff', '#000', '#40A551', '#4F007D', '#ff74bc', '#db3832', '#3880ff', '#E86B26', '#fff500']"
                     [(colorPicker)]="colorForLine"
                     (colorPickerChange)="onColorChange($event, 'line')"
                     id="colorForLine"
@@ -130,30 +130,28 @@
     <ion-grid>
       <ion-row>
         <ion-col class="data" size="12" size-md="6">
-          <ion-button type="reset" (click)="resetForm()" color="light"
+          <ion-button type="reset" (click)="resetForm()" color="light" shape="round" size="medium"
             >Start Again</ion-button>
         </ion-col>
         <ion-col class="data" size="12" size-md="6">
-          <ion-button type="button" (click)="defaultColors()" color="light"
-            >Default Colors</ion-button>
+          <ion-button type="button" (click)="defaultColors()" color="light" shape="round" size="medium"
+            >Reset Colors</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <!-- <ion-fab-button color="light" class="download" (click)="print()" *ngIf="!isNamesEmpty()">
-      <ion-icon name="download"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light" class="preview" (click)="preview()" *ngIf="!isNamesEmpty()">
-      <ion-icon name="eye"></ion-icon>
-    </ion-fab-button> -->
   </div>
   <div class="result">
+    <div class="empty-state" *ngIf="isNamesEmpty()" (click)="focusOnInput()">
+      <h2>Add names to start</h2>
+      <img src="assets/images/empty-state-image.png" alt="Pairing matirx logo" class="empty-state--image" />
+    </div>
     <ion-grid *ngIf="!isNamesEmpty()" id="printme">
       <ion-row>
         <ion-col>
-          <ion-button type="button" (click)="download()" id="download"
+          <ion-button type="button" (click)="download()" id="download" shape="round" size="medium"
             ><ion-icon name="download"></ion-icon>&nbsp;PDF</ion-button
           >
-          <ion-button type="button" (click)="preview()" id="preview"
+          <ion-button type="button" (click)="preview()" id="preview" shape="round" size="medium"
             ><ion-icon name="print"></ion-icon>&nbsp;Print Preview</ion-button
           >
         </ion-col>

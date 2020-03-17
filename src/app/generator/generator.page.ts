@@ -4,6 +4,7 @@ import { IonInput } from "@ionic/angular";
 import focusOnInput from "../utils/focus-on-input";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { COPYRIGHT } from '../utils/copyright-text';
 
 @Component({
   selector: "app-generator",
@@ -33,7 +34,7 @@ export class GeneratorPage implements AfterViewInit {
   i;
   j;
   hex;
-
+  copyright: string;
   @ViewChild("inputToFocus", { static: false }) namesInput: IonInput;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
@@ -51,6 +52,7 @@ export class GeneratorPage implements AfterViewInit {
   ngAfterViewInit() {
     focusOnInput(this.namesInput);
     this.defaultColors();
+    this.copyright = COPYRIGHT;
   }
 
   goHome(): void {
@@ -286,6 +288,9 @@ export class GeneratorPage implements AfterViewInit {
         }
       };
     });
+  }
+  focusOnInput() {
+    focusOnInput(this.namesInput);
   }
 }
 
