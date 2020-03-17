@@ -1,7 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="false">
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      {{title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,9 +12,32 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <section>
+    <div id="container">
+      <strong
+        >Make a pairing matrix for your awesome team in just a few
+        clicks</strong
+      >
+      <form (ngSubmit)="doIt()"> 
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="6" offset-md="3" size-lg="8" offset-md="2">
+              <ion-input
+                placeholder="{{team.names}}"
+                [(ngModel)]="names"
+                [ngModelOptions]="{standalone: true}"
+                #inputToFocus
+              ></ion-input>
+              
+            </ion-col>
+            <ion-col size="12" size-md="6" offset-md="3" size-lg="8" offset-md="2">
+              <ion-button (click)="doIt()" shape="round" size="large">
+                {{team.action}}</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </section>
 </ion-content>

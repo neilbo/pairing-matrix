@@ -1,0 +1,212 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="primary">
+    <ion-title (click)="goHome()">
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="controls">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="data" size="12" size-md="6">
+          <ion-item>
+            <ion-label position="stacked" class="label">
+              Names
+            </ion-label>
+            <ion-input
+              type="text"
+              placeholder="Tony, Steve, Thor, Nat, Bruce, Clint, Vision, Wanda"
+              [(ngModel)]="names"
+              [ngModelOptions]="{standalone: true}"
+              (ionChange)="onNamesChange()"
+              (ionBlur)="onNamesChange()"
+              #inputToFocus
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" class="label">Team Name</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Avengers"
+              [(ngModel)]="teamName"
+              [ngModelOptions]="{standalone: true}"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" class="label">Iteration</ion-label>
+            <ion-input
+              type="number"
+              placeholder="22"
+              [(ngModel)]="iteration"
+              [ngModelOptions]="{standalone: true}"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="colors" size="12" size-md="6">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" size-md="6">
+                <div class="color-picker-group">
+                  <input
+                    [style.background]="bgForPrimary"
+                    [style.color]="bgForPrimary"
+                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [(colorPicker)]="bgForPrimary"
+                    (colorPickerChange)="onColorChange($event, 'primary')"
+                    id="bgForPrimary"
+                    [cpAddColorButton]="true"
+                    class="color-picker"
+                    [(ngModel)]="bgForPrimary"
+                    [ngModelOptions]="{standalone: true}"
+                    [cpOutputFormat]="hex"
+                  />
+                  <label for="bgForPrimary">Main Color</label>
+                </div>
+              </ion-col>
+              <ion-col size="12" size-md="6">
+                <div class="color-picker-group">
+                  <input
+                    type="text"
+                    [style.background]="colorForText"
+                    [style.color]="colorForText"
+                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [(colorPicker)]="colorForText"
+                    (colorPickerChange)="onColorChange($event, 'text')"
+                    id="colorForText"
+                    [cpAddColorButton]="true"
+                    class="color-picker"
+                    [(ngModel)]="colorForText"
+                    [ngModelOptions]="{standalone: true}"
+                    [cpOutputFormat]="hex"
+                  />
+                  <label for="colorForText">Names Color</label>
+                </div>
+              </ion-col>
+              <ion-col size="12" size-md="6">
+                <div class="color-picker-group">
+                  <input
+                    type="text"
+                    [style.background]="bgForMatched"
+                    [style.color]="bgForMatched"
+                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [(colorPicker)]="bgForMatched"
+                    (colorPickerChange)="onColorChange($event, 'matched')"
+                    id="bgForMatched"
+                    [cpAddColorButton]="true"
+                    class="color-picker"
+                    [(ngModel)]="bgForMatched"
+                    [ngModelOptions]="{standalone: true}"
+                    [cpOutputFormat]="hex"
+                  />
+                  <label for="bgForMatched">Matched Color</label>
+                </div>
+              </ion-col>
+              <ion-col size="12" size-md="6">
+                <div class="color-picker-group">
+                  <input
+                    type="text"
+                    [style.background]="colorForLine"
+                    [style.color]="colorForLine"
+                    [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+                    [(colorPicker)]="colorForLine"
+                    (colorPickerChange)="onColorChange($event, 'line')"
+                    id="colorForLine"
+                    [cpAddColorButton]="true"
+                    class="color-picker"
+                    [(ngModel)]="colorForLine"
+                    [ngModelOptions]="{standalone: true}"
+                    [cpOutputFormat]="hex"
+                  />
+                  <label for="colorForText">Border Color</label>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="data" size="12" size-md="6">
+          <ion-button type="reset" (click)="resetForm()" color="light"
+            >Start Again</ion-button>
+        </ion-col>
+        <ion-col class="data" size="12" size-md="6">
+          <ion-button type="button" (click)="defaultColors()" color="light"
+            >Default Colors</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-fab-button color="light" class="download" (click)="print()" *ngIf="!isNamesEmpty()">
+      <ion-icon name="download"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="light" class="preview" (click)="preview()" *ngIf="!isNamesEmpty()">
+      <ion-icon name="eye"></ion-icon>
+    </ion-fab-button> -->
+  </div>
+  <div class="result">
+    <ion-grid *ngIf="!isNamesEmpty()" id="printme">
+      <ion-row>
+        <ion-col>
+          <ion-button type="button" (click)="download()" id="download"
+            ><ion-icon name="download"></ion-icon>&nbsp;PDF</ion-button
+          >
+          <ion-button type="button" (click)="preview()" id="preview"
+            ><ion-icon name="eye"></ion-icon>&nbsp;Preview</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h2>
+            <span *ngIf="teamName"
+              >Team:
+              <span [style.color]="bgForPrimary">{{teamName}}</span></span
+            >
+            &nbsp;
+            <span *ngIf="iteration"
+              >Iteration:
+              <span [style.color]="bgForPrimary">{{iteration}}</span></span
+            >
+          </h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <table width="100%" id="matrix" [style.border]="colorForLine">
+            <tr>
+              <th
+                *ngFor="let h of rowHeader"
+                class="cell--header"
+                [style.background]="setBackground(i, j)"
+                [style.border]="setBorder(i, j)"
+                [style.color]="setTextColor()"
+              >
+                {{h.text}}
+              </th>
+            </tr>
+            <tr *ngFor="let x of columnHeader; let i = index">
+              <th
+                class="cell--header"
+                [style.background]="setBackground(i, j)"
+                [style.border]="setBorder(i, j)"
+                [style.color]="setTextColor()"
+              >
+                {{x}}
+              </th>
+              <ng-container *ngFor="let y of spaces; let j = index">
+                <td
+                  class="cell--default"
+                  [style.background]="setBackground(i, j)"
+                  [style.border]="setBorder(i, j)"
+                ></td>
+              </ng-container>
+            </tr>
+          </table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

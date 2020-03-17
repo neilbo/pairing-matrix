@@ -1,0 +1,56 @@
+ion-title {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.controls {
+  background-color: var(--ion-color-primary);
+  padding: 2em 1.5em;
+}
+
+.color-picker-group {
+  margin: 1em 0;
+  color: white;
+}
+
+input.color-picker {
+  position: relative;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+  z-index: 1;
+}
+
+ion-fab-button {
+  &.download {
+    position: absolute;
+    left: 50%;
+    margin-left: -53px; // half the width of ion-fab-button
+  }
+  &.preview {
+    position: absolute;
+    left: 50%;
+    margin-left: -23px; // half the width of ion-fab-button
+  }
+  
+}
+// Table
+.cell--header {
+  width: 50px;
+  height: 50px;
+  // border: 1px solid black;
+}
+
+td.cell--default {
+  background: white;
+  // border: 1px solid black;
+}
+
+@media print { 
+  /* All your print styles go here */
+  ion-menu, ion-header, form, color-picker, #print, #preview, .controls {
+    display: none !important;
+  }
+ }
