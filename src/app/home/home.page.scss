@@ -27,6 +27,7 @@ div.logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-bottom: 2em;
   img.logo {
     height: 14em;

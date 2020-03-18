@@ -3,6 +3,18 @@
     <ion-title (click)="goHome()">
       {{title}} {{copyright}}
     </ion-title>
+    <ion-buttons slot="end">
+      <a
+        href="https://www.producthunt.com/posts/pairing-matrix?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pairing-matrix"
+        target="_blank"
+        ><img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=188504&theme=light"
+          alt="Pairing Matrix - Pairing Matrix Generator for busy agile teams | Product Hunt Embed"
+          style="width: 250px; height: 40px;"
+          width="250px"
+          height="54px"
+      /></a>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -130,12 +142,24 @@
     <ion-grid>
       <ion-row>
         <ion-col class="data" size="12" size-md="6">
-          <ion-button type="reset" (click)="resetForm()" color="light" shape="round" size="medium"
-            >Start Again</ion-button>
+          <ion-button
+            type="reset"
+            (click)="resetForm()"
+            color="light"
+            shape="round"
+            size="medium"
+            >Start Again</ion-button
+          >
         </ion-col>
         <ion-col class="data" size="12" size-md="6">
-          <ion-button type="button" (click)="defaultColors()" color="light" shape="round" size="medium"
-            >Reset Colors</ion-button>
+          <ion-button
+            type="button"
+            (click)="defaultColors()"
+            color="light"
+            shape="round"
+            size="medium"
+            >Reset Colors</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -143,15 +167,29 @@
   <div class="result">
     <div class="empty-state" *ngIf="isNamesEmpty()" (click)="focusOnInput()">
       <h2>Add names to start</h2>
-      <img src="assets/images/empty-state-image.png" alt="Pairing matirx logo" class="empty-state--image" />
+      <img
+        src="assets/images/empty-state-image.png"
+        alt="Pairing matirx logo"
+        class="empty-state--image"
+      />
     </div>
     <ion-grid *ngIf="!isNamesEmpty()" id="printme">
       <ion-row>
         <ion-col>
-          <ion-button type="button" (click)="download()" id="download" shape="round" size="medium"
+          <ion-button
+            type="button"
+            (click)="download()"
+            id="download"
+            shape="round"
+            size="medium"
             ><ion-icon name="download"></ion-icon>&nbsp;PDF</ion-button
           >
-          <ion-button type="button" (click)="preview()" id="preview" shape="round" size="medium"
+          <ion-button
+            type="button"
+            (click)="preview()"
+            id="preview"
+            shape="round"
+            size="medium"
             ><ion-icon name="print"></ion-icon>&nbsp;Print Preview</ion-button
           >
         </ion-col>
