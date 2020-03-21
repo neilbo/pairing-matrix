@@ -26,9 +26,18 @@
             height="54px"
         /></a>
         <img
+          src="assets/images/logo-pairing-matrix.gif"
+          alt="Pairing matirx logo"
+          class="logo"
+          (click)="toggleLogo('animated')"
+          *ngIf="!useStaticLogo"
+        />
+        <img
           src="assets/images/icon@500px —inverse.png"
           alt="Pairing matirx logo"
           class="logo"
+          (click)="toggleLogo('static')"
+          *ngIf="useStaticLogo"
         />
       </div>
       <strong

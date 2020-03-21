@@ -14,6 +14,7 @@ export class HomePage {
   names: string;
   team: { names: string; action: string };
   copyright: string;
+  useStaticLogo: boolean = false;
   @ViewChild("inputToFocus", { static: false }) namesInput: IonInput;
   constructor(public router: Router) {
     this.team = {
@@ -37,5 +38,13 @@ export class HomePage {
     this.names = "";
     focusOnInput(this.namesInput);
     this.copyright = COPYRIGHT;
+  }
+
+  toggleLogo(currentLogo: string) {
+    if (currentLogo === "animated") {
+      this.useStaticLogo = true;
+    } else {
+      this.useStaticLogo = false;
+    }
   }
 }
